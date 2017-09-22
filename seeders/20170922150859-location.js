@@ -13,27 +13,27 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('destinations', [{
-      destination: 'Sydney',
+      location: 'Sydney',
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      destination: 'Amsterdam',
+      location: 'Amsterdam',
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      destination: 'Tokyo',
+      location: 'Tokyo',
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      destination: 'Vancouver',
+      location: 'Vancouver',
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      destination: 'Hong Kong',
+      location: 'Hong Kong',
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});

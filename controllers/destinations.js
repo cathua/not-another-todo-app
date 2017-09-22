@@ -1,7 +1,6 @@
 var express = require('express');
 var db = require('../models');
 var router = express.Router();
-// var Destination = DB.models.Destination;
 
 
 // show
@@ -19,15 +18,37 @@ router.get('/:id', function(req, res) {
 
 // post
 router.post('/', function(req, res) {
-  db.destination.findOrCreate(
-      {where: {destination: req.body.destination}
-    })
-    .then(function(destinations){
-      res.status(200).json(destinations);
+  db.destination.create(req.body)
+    .then(function(destination){
+      res.status(200).json(destination);
     })
     .catch(function(error) {
       res.status(400).send('main/404');
     });
+});
+
+// edit
+router.put('/:id', function(req, res){
+  db.destination.findById(req.params.id)
+    .then(function(destination) {
+      destination.updateAttributes({
+        location: req.body.location
+      })
+      .then(function(){
+        res.status(200).json(req.body);
+      })
+    })
+});
+
+// delete
+router.delete('/:id', function(req, res){
+  db.destination.findById(req.params.id)
+    .then(destination => {
+      destination.destroy();
+    })
+    res.json({
+      message: 'deleted'
+    })
 });
 
 module.exports = router;
